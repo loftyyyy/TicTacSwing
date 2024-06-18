@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class TicTacToe {
     private ArrayList<JButton> buttons = new ArrayList<>();
+    private char currentChar = 'X';
     public static void main(String[] args) {
         new TicTacToe().startGUI();
 
@@ -23,10 +24,10 @@ public class TicTacToe {
             JButton button = new JButton();
 //            button.setPreferredSize();
             button.setFocusPainted(false);
-            button.setFont(new Font("Lato", Font.PLAIN, 160));
+            button.setFont(new Font("Lato", Font.PLAIN, 120));
             button.setBackground(Color.decode("#F5E7B2"));
-            button.setHorizontalAlignment(SwingConstants.CENTER);
-            button.setVerticalAlignment(SwingConstants.CENTER);
+            button.setHorizontalTextPosition(SwingConstants.CENTER);
+            button.setVerticalTextPosition(SwingConstants.CENTER);
             button.addActionListener(new ButtonActionListener());
             buttons.add(button);
             buttonPanel.add(button);
@@ -48,22 +49,14 @@ public class TicTacToe {
         public void actionPerformed(ActionEvent e) {
             for(JButton button : buttons){
                 if(button == e.getSource()){
-                    button.setText("x");
+                    button.setText(String.valueOf(currentChar));
+                    currentChar = (currentChar == 'X') ? 'O' : 'X';
 
                 }
-
-
             }
         }
 
 
-    }
-    class MouseActionListener extends MouseAdapter {
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            super.mouseReleased(e);
-            System.out.println("released");
-        }
     }
 
 }
