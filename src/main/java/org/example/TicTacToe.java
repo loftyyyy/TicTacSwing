@@ -32,6 +32,10 @@ public class TicTacToe {
             buttons.add(button);
             buttonPanel.add(button);
         }
+        JButton clearButton = new JButton("Clear Table");
+        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true);}));
+
+        controlPanel.add(clearButton);
 
         window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
         window.getContentPane().add(BorderLayout.SOUTH, controlPanel);
@@ -50,13 +54,13 @@ public class TicTacToe {
             for(JButton button : buttons){
                 if(button == e.getSource()){
                     button.setText(String.valueOf(currentChar));
+                    button.setEnabled(false);
                     currentChar = (currentChar == 'X') ? 'O' : 'X';
-
                 }
             }
         }
 
-
     }
+
 
 }
