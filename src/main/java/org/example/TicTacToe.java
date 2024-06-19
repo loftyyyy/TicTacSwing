@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class TicTacToe {
     private ArrayList<JButton> buttons = new ArrayList<>();
     private char currentChar = 'X';
+    private JButton[][] button2d = new JButton[3][3];
     public static void main(String[] args) {
         new TicTacToe().startGUI();
 
