@@ -54,19 +54,37 @@ public class TicTacToe {
     public boolean checkWin(){
         // Vertical
         for(int i = 0; i < 3; i++){
-            if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText())  && !board[0][i].getText().isEmpty() ){
-                System.out.println("Bitch");
+            if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText()) && board[2][i].getText().equals(board[0][i].getText()) && !board[0][i].getText().isEmpty() ){
+                winLogic();
+                System.out.println(board[0][i].getText()+ " has won!");
             }
         }
 
         //Horizontal
+        for(int i = 0; i < 3; i++){
+            if(board[i][0].getText().equals(board[i][1].getText()) && board[i][1].getText().equals(board[i][2].getText()) && board[i][2].getText().equals(board[i][0].getText()) && !board[i][0].getText().isEmpty() ){
+                System.out.println(board[0][i].getText()+ " has won!");
+            }
+        }
         //Diagonals
 
+        if(board[0][0].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][2].getText()) && board[2][2].getText().equals(board[0][0].getText()) && !board[0][0].getText().isEmpty() ){
+            System.out.println(board[0][0].getText()+ " has won!");
+        }
+
+        if(board[0][2].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][0].getText()) && board[2][0].getText().equals(board[0][2].getText()) && !board[0][2].getText().isEmpty() ){
+            System.out.println(board[0][2].getText()+ " has won!");
+        }
         return false;
 
     }
     public void winLogic(){
-
+        lockAllBtn();
+    }
+    public void lockAllBtn(){
+        for(JButton button : buttons){
+            button.setEnabled(false);
+        }
     }
     class ButtonActionListener implements ActionListener{
         @Override
@@ -74,9 +92,8 @@ public class TicTacToe {
             for(JButton button : buttons){
                 if(button == e.getSource()){
                     button.setText(String.valueOf(currentChar));
-
                     button.setEnabled(false);
-                    winLogic();
+                    checkWin();
                     currentChar = (currentChar == 'X') ? 'O' : 'X';
                 }
             }
