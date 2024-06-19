@@ -51,35 +51,34 @@ public class TicTacToe {
 
 
     }
-    public boolean checkWin(){
+    public void checkWin(){
         // Vertical
         for(int i = 0; i < 3; i++){
             if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText()) && board[2][i].getText().equals(board[0][i].getText()) && !board[0][i].getText().isEmpty() ){
-                winLogic();
-                System.out.println(board[0][i].getText()+ " has won!");
+                winLogic(board[0][i].getText());
+
             }
         }
-
         //Horizontal
         for(int i = 0; i < 3; i++){
             if(board[i][0].getText().equals(board[i][1].getText()) && board[i][1].getText().equals(board[i][2].getText()) && board[i][2].getText().equals(board[i][0].getText()) && !board[i][0].getText().isEmpty() ){
-                System.out.println(board[0][i].getText()+ " has won!");
+                winLogic(board[0][i].getText());
             }
         }
         //Diagonals
 
         if(board[0][0].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][2].getText()) && board[2][2].getText().equals(board[0][0].getText()) && !board[0][0].getText().isEmpty() ){
-            System.out.println(board[0][0].getText()+ " has won!");
+            winLogic(board[0][0].getText());
         }
 
         if(board[0][2].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][0].getText()) && board[2][0].getText().equals(board[0][2].getText()) && !board[0][2].getText().isEmpty() ){
-            System.out.println(board[0][2].getText()+ " has won!");
+            winLogic(board[0][2].getText());
         }
-        return false;
 
     }
-    public void winLogic(){
+    public void winLogic(String player){
         lockAllBtn();
+        System.out.println(player + " has won!");
     }
     public void lockAllBtn(){
         for(JButton button : buttons){
