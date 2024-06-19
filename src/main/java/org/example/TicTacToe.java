@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class TicTacToe {
     private ArrayList<JButton> buttons = new ArrayList<>();
     private char currentChar = 'X';
-    private JButton[][] button2d = new JButton[3][3];
+    private JButton[][] board = new JButton[3][3];
     public static void main(String[] args) {
         new TicTacToe().startGUI();
 
@@ -30,6 +30,8 @@ public class TicTacToe {
             button.setHorizontalTextPosition(SwingConstants.CENTER);
             button.setVerticalTextPosition(SwingConstants.CENTER);
             button.addActionListener(new ButtonActionListener());
+            board[i / 3][i % 3] = button;
+//            System.out.println("[" + i / 3 + "]" + "[" + i % 3 +  "]");
             buttons.add(button);
             buttonPanel.add(button);
         }
@@ -47,6 +49,15 @@ public class TicTacToe {
         window.setResizable(false);
 
 
+
+    }
+    public boolean checkWin(char player){
+        // Vertical
+
+        //Horizontal
+        //Diagonals
+
+        return false;
 
     }
     class ButtonActionListener implements ActionListener{
