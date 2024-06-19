@@ -12,12 +12,14 @@ public class TicTacToe {
     private ArrayList<JButton> buttons = new ArrayList<>();
     private char currentChar = 'X';
     private JButton[][] board = new JButton[3][3];
+    private int moveCount;
+    private boolean won = false;
     public static void main(String[] args) {
         new TicTacToe().startGUI();
 
     }
     public void startGUI(){
-        JFrame window = new JFrame("Tic Tac Toe Nigga");
+        JFrame window = new JFrame("Tic Tac Toe ");
         JPanel buttonPanel = new JPanel(new GridLayout(3,3));
         JPanel controlPanel = new JPanel();
 
@@ -36,7 +38,7 @@ public class TicTacToe {
             buttonPanel.add(button);
         }
         JButton clearButton = new JButton("Clear Table");
-        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true); currentChar = 'X';}));
+        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true); currentChar = 'X'; won = false; moveCount = 0;}));
 
         controlPanel.add(clearButton);
 
@@ -52,6 +54,7 @@ public class TicTacToe {
 
     }
     public void checkWin(){
+        moveCount++;
         // Vertical
         for(int i = 0; i < 3; i++){
             if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText()) && board[2][i].getText().equals(board[0][i].getText()) && !board[0][i].getText().isEmpty() ){
@@ -75,8 +78,16 @@ public class TicTacToe {
             winLogic(board[0][2].getText());
         }
 
+        if(moveCount == 9 && !won){
+            System.out.println("Draw");
+            moveCount = 0;
+        }
+        System.out.println(moveCount);
+
     }
     public void winLogic(String player){
+        won = true;
+        moveCount = 0;
         lockAllBtn();
         System.out.println(player + " has won!");
     }
