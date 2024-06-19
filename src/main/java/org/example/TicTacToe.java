@@ -36,7 +36,7 @@ public class TicTacToe {
             buttonPanel.add(button);
         }
         JButton clearButton = new JButton("Clear Table");
-        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true);}));
+        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true); currentChar = 'X';}));
 
         controlPanel.add(clearButton);
 
@@ -51,13 +51,21 @@ public class TicTacToe {
 
 
     }
-    public boolean checkWin(char player){
+    public boolean checkWin(){
         // Vertical
+        for(int i = 0; i < 3; i++){
+            if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText())  && !board[0][i].getText().isEmpty() ){
+                System.out.println("Bitch");
+            }
+        }
 
         //Horizontal
         //Diagonals
 
         return false;
+
+    }
+    public void winLogic(){
 
     }
     class ButtonActionListener implements ActionListener{
@@ -66,7 +74,9 @@ public class TicTacToe {
             for(JButton button : buttons){
                 if(button == e.getSource()){
                     button.setText(String.valueOf(currentChar));
+
                     button.setEnabled(false);
+                    winLogic();
                     currentChar = (currentChar == 'X') ? 'O' : 'X';
                 }
             }
