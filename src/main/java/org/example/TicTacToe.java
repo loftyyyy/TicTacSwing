@@ -20,6 +20,7 @@ public class TicTacToe {
     private int Oscore = 0;
 
     public static void main(String[] args) {
+
         new TicTacToe().startGUI();
 
     }
@@ -141,11 +142,12 @@ public class TicTacToe {
         for(JButton button : buttons){
             button.setText("");
             button.setEnabled(true);
-            currentChar = 'X';
-            won = false;
-            moveCount = 0;
+            button.setForeground(Color.black);
 
         }
+        currentChar = 'X';
+        won = false;
+        moveCount = 0;
     }
     class ButtonActionListener implements ActionListener{
         @Override
