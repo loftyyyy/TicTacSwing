@@ -12,8 +12,13 @@ public class TicTacToe {
     private ArrayList<JButton> buttons = new ArrayList<>();
     private char currentChar = 'X';
     private JButton[][] board = new JButton[3][3];
+    private JLabel oLabel = new JLabel("O: ");
+    private JLabel xLabel = new JLabel("X: ");
     private int moveCount;
     private boolean won = false;
+    private int Xscore = 0;
+    private int Oscore = 0;
+
     public static void main(String[] args) {
         new TicTacToe().startGUI();
 
@@ -21,7 +26,7 @@ public class TicTacToe {
     public void startGUI(){
         JFrame window = new JFrame("Tic Tac Toe ");
         JPanel buttonPanel = new JPanel(new GridLayout(3,3));
-        JPanel controlPanel = new JPanel();
+        JPanel controlPanel = new JPanel(new GridLayout(1,3));
 
         for(int i = 0; i < 9;i++){
             JButton button = new JButton();
@@ -40,7 +45,11 @@ public class TicTacToe {
         JButton clearButton = new JButton("Clear Table");
         clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true); currentChar = 'X'; won = false; moveCount = 0;}));
 
+
+
+        controlPanel.add(xLabel);
         controlPanel.add(clearButton);
+        controlPanel.add(oLabel);
 
         window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
         window.getContentPane().add(BorderLayout.SOUTH, controlPanel);
@@ -51,6 +60,9 @@ public class TicTacToe {
         window.setResizable(false);
 
 
+
+    }
+    public void getScore(){
 
     }
     public void checkWin(){
@@ -82,14 +94,20 @@ public class TicTacToe {
             System.out.println("Draw");
             moveCount = 0;
         }
-        System.out.println(moveCount);
 
     }
     public void winLogic(String player){
         won = true;
         moveCount = 0;
         lockAllBtn();
-        System.out.println(player + " has won!");
+        System.out.println(player);
+        if(player.equals("X")){
+            Xscore++;
+            System.out.println("X wins");
+        }else{
+            Oscore++;
+            System.out.println("O wins!");
+        }
     }
     public void lockAllBtn(){
         for(JButton button : buttons){
