@@ -62,9 +62,6 @@ public class TicTacToe {
 
 
     }
-    public void getScore(){
-
-    }
     public void checkWin(){
         moveCount++;
         // Vertical
@@ -101,6 +98,7 @@ public class TicTacToe {
         moveCount = 0;
         lockAllBtn();
         System.out.println(player);
+
         if(player.equals("X")){
             Xscore++;
             System.out.println("X wins");
@@ -108,6 +106,13 @@ public class TicTacToe {
             Oscore++;
             System.out.println("O wins!");
         }
+        updateScoreBoard();
+
+    }
+    public void updateScoreBoard(){
+        oLabel.setText(String.valueOf("O: "+Oscore));
+        xLabel.setText(String.valueOf("X: " +  Xscore));
+
     }
     public void lockAllBtn(){
         for(JButton button : buttons){
