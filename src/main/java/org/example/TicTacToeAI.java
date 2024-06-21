@@ -62,7 +62,7 @@ public class TicTacToeAI {
 
 
     }
-    public void checkWin(){
+    public void checkWin(JButton[][] board){
         moveCount++;
         // Vertical
         for(int i = 0; i < 3; i++){
@@ -154,10 +154,12 @@ public class TicTacToeAI {
                 if(button == e.getSource()){
                     button.setText(String.valueOf(currentChar));
                     button.setEnabled(false);
-                    checkWin();
-                    currentChar = (currentChar == 'X') ? 'O' : 'X';
+//                    currentChar = (currentChar == 'X') ? 'O' : 'X';
+                    Minimax minimax = new Minimax();
+                    System.out.println(minimax.evaluate(board,3,Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY,false));
                 }
             }
+            checkWin(board);
         }
 
     }

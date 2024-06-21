@@ -1,5 +1,7 @@
 package org.example;
 
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
 
 public class Minimax {
@@ -8,10 +10,10 @@ public class Minimax {
         //TODO: Base Case, create a function that returns 0 if draw, 1 if X wins, -1 if O wins
 
 
-        if(depth == 0){
-            //TODO: Check for win
-            return 0;
-        }
+//        if(depth == 0){
+//            //TODO: Check for win
+//            return 0;
+//        }
         if(maximizingPlayer){
             float maxEval = Float.NEGATIVE_INFINITY;
             for(int i = 0; i < board.length; i++){
@@ -55,4 +57,5 @@ public class Minimax {
 
         }
     }
+
 }
