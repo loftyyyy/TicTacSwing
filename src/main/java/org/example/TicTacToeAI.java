@@ -7,5 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TicTacToeAI {
+    //TODO: Create a AIMove and PlayerMove methods
+
 
 }
