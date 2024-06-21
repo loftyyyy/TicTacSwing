@@ -19,15 +19,16 @@ public class Minimax {
                     if(board[i][j].getText().isEmpty()){
                         board[i][j].setText("O");
                         float eval = evaluate(board, depth -1, alpha, beta, false);
-                        maxEval = Math.max(alpha, eval);
+                        maxEval = Math.max(maxEval, eval);
+                        alpha = Math.max(alpha, eval);
                         if(beta <= alpha){
                             break;
                         }
-                        System.out.println("max eval: " +maxEval);
-                        return maxEval;
                     }
                 }
             }
+            System.out.println("max eval: " +maxEval);
+            return maxEval;
 
         }else{
             float minEval = Float.POSITIVE_INFINITY;
@@ -35,14 +36,21 @@ public class Minimax {
                 for(int j = 0; j < board[i].length; i++){
                     if(board[i][j].getText().isEmpty()){
                         board[i][j].setText("X");
-                        float eval = evaluate(board, depth - 1, );
+                        float eval = evaluate(board, depth - 1, alpha, beta, true);
+                        minEval = Math.min(minEval, eval);
+                        beta = Math.min(beta, eval);
+                        if(beta <= alpha){
+                            break;
+                        }
+
                     }
 
                 }
             }
+            System.out.println("Min eval: " + minEval);
+            return minEval;
 
 
         }
-        return 0;
     }
 }
