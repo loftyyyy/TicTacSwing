@@ -19,6 +19,7 @@ public class Minimax {
                     if(board[i][j].getText().isEmpty()){
                         board[i][j].setText("O");
                         float eval = evaluate(board, depth -1, alpha, beta, false);
+                        board[i][j].setText("");
                         maxEval = Math.max(maxEval, eval);
                         alpha = Math.max(alpha, eval);
                         if(beta <= alpha){
@@ -37,6 +38,7 @@ public class Minimax {
                     if(board[i][j].getText().isEmpty()){
                         board[i][j].setText("X");
                         float eval = evaluate(board, depth - 1, alpha, beta, true);
+                        board[i][j].setText("");
                         minEval = Math.min(minEval, eval);
                         beta = Math.min(beta, eval);
                         if(beta <= alpha){
