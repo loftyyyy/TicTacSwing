@@ -4,11 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class TicTacToe {
+public class TicTacToeClassic {
     private ArrayList<JButton> buttons = new ArrayList<>();
     private char currentChar = 'X';
     private JButton[][] board = new JButton[3][3];
@@ -21,7 +19,7 @@ public class TicTacToe {
 
     public static void main(String[] args) {
 
-        new TicTacToe().startGUI();
+        new TicTacToeClassic().startGUI();
 
     }
     public void startGUI(){
