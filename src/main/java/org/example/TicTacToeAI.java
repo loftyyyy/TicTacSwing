@@ -107,6 +107,9 @@ public class TicTacToeAI {
         }
 
     }
+    public void aiMove(){
+
+    }
     public void winLogic(String player){
         won = true;
         moveCount = 0;
@@ -157,6 +160,7 @@ public class TicTacToeAI {
 //                    currentChar = (currentChar == 'X') ? 'O' : 'X';
                     Minimax minimax = new Minimax();
                     System.out.println(minimax.evaluate(board,3,Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY,false));
+                    System.out.println(currentChar);
                 }
             }
             checkWin(board);
