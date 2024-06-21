@@ -3,30 +3,44 @@ package org.example;
 import javax.swing.*;
 
 public class Minimax {
-    private JButton[][] board;
-    private int depth;
-    private float alpha;
-    private float beta;
-    private boolean maximizingPlayer;
 
-    public Minimax(JButton[][] board, int depth, float alpha, float beta, boolean maximizingPlayer){
-        this.board = board;
-        this.depth = depth;
-        this.alpha = alpha;
-        this.beta =  beta;
-        this.maximizingPlayer = maximizingPlayer;
+    public float evaluate(JButton[][] board, int depth, float alpha, float beta, boolean maximizingPlayer){
+        //TODO: Base Case, create a function that returns 0 if draw, 1 if X wins, -1 if O wins
 
-    }
-    public float evaluate(){
+
         if(depth == 0){
+            //TODO: Check for win
             return 0;
         }
         if(maximizingPlayer){
             float maxEval = Float.NEGATIVE_INFINITY;
-
+            for(int i = 0; i < board.length; i++){
+                for(int j = 0; j < board[i].length; j++){
+                    if(board[i][j].getText().isEmpty()){
+                        board[i][j].setText("O");
+                        float eval = evaluate(board, depth -1, alpha, beta, false);
+                        maxEval = Math.max(alpha, eval);
+                        if(beta <= alpha){
+                            break;
+                        }
+                        System.out.println("max eval: " +maxEval);
+                        return maxEval;
+                    }
+                }
+            }
 
         }else{
             float minEval = Float.POSITIVE_INFINITY;
+            for(int i = 0; i < board.length; i++){
+                for(int j = 0; j < board[i].length; i++){
+                    if(board[i][j].getText().isEmpty()){
+                        board[i][j].setText("X");
+                        float eval = evaluate(board, depth - 1, );
+                    }
+
+                }
+            }
+
 
         }
         return 0;
