@@ -23,10 +23,25 @@ public class TicTacToeAI {
         for(int i = 0; i < 9; i++){
             JButton button = new JButton();
 
-
-
+            button.setFocusPainted(false);
+            button.setFont(new Font("Lato", Font.PLAIN, 120));
+            button.setBackground(Color.decode("#F5E7B2"));
+            button.setHorizontalTextPosition(SwingConstants.CENTER);
+            button.setVerticalTextPosition(SwingConstants.CENTER);
+            buttonPanel.add(button);
+            board[i / 3][i % 3] = button;
 
         }
+        JButton clearBTN = new JButton("Clear");
+        controlPanel.add(clearBTN);
+        window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
+
+        window.getContentPane().add(BorderLayout.SOUTH, controlPanel);
+
+        window.setSize(500,700);
+        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        window.setVisible(true);
+        window.setResizable(false);
 
 
     }
