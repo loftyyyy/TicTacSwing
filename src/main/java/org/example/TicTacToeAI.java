@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TicTacToeAI {
+    // Author @loftyyyy
+    // Resources: Sebastian Lague's Algorithms Explained – minimax and alpha-beta pruning [https://www.youtube.com/watch?v=l-hh51ncgDI]
+
     private JButton[][] board = new JButton[3][3];
     private boolean playerMove = true;
 
@@ -46,6 +49,12 @@ public class TicTacToeAI {
 
 
     }
+
+    /**
+     *
+     * @param board
+     * @param depth
+     */
     public void AIMove(JButton[][] board, int depth){
         Minimax minimax = new Minimax();
         int bestEval = Integer.MIN_VALUE;
@@ -72,27 +81,12 @@ public class TicTacToeAI {
             playerMove = true;
         }
     }
-    class BtnActionListener implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton clickedBtn = (JButton) e.getSource();
-            if(playerMove){
-                clickedBtn.setText("X");
-                playerMove = false;
-                if(checkWin(board) == 0){
-                    AIMove(board, 0);
-                }
-            }
-            if(checkWin(board) != 0){
-                // Implemented Runnable so that it highlights the winning combination before showing the message dialog
-                SwingUtilities.invokeLater(new showMessage(checkWin(board)));
-            }
-
-            clickedBtn.setEnabled(false);
-        }
-    }
-
+    /**
+     *
+     * @param board
+     * @return
+     */
     public int checkWin(JButton[][] board){
 
         // Vertical and Horizontal
@@ -145,6 +139,38 @@ public class TicTacToeAI {
         return 2;
 
     }
+    public void clearBoard(){
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                board[i][j].setText("");
+            board[i][j].setEnabled(true);
+            }
+        }
+        playerMove = true;
+    }
+
+
+    class BtnActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton clickedBtn = (JButton) e.getSource();
+            if(playerMove){
+                clickedBtn.setText("X");
+                playerMove = false;
+                if(checkWin(board) == 0){
+                    AIMove(board, 0);
+                }
+            }
+            if(checkWin(board) != 0){
+                // Implemented Runnable so that it highlights the winning combination before showing the message dialog
+                SwingUtilities.invokeLater(new showMessage(checkWin(board)));
+            }
+
+            clickedBtn.setEnabled(false);
+        }
+    }
+
     class showMessage implements Runnable{
         int result;
         showMessage(int result){
@@ -165,17 +191,4 @@ public class TicTacToeAI {
 
         }
     }
-    public void clearBoard(){
-
-                for(int i = 0; i < board.length; i++){
-                    for(int j = 0; j < board[i].length; j++){
-                        board[i][j].setText("");
-                    board[i][j].setEnabled(true);
-                    }
-                }
-                playerMove = true;
-            }
-
-
-
 }
