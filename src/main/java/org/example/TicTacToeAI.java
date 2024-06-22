@@ -201,10 +201,10 @@ public class TicTacToeAI {
 
             if (result == 1) {
                 JOptionPane.showMessageDialog(null, "AI Wins!");
-                playerScore++;
+                computerScore++;
             } else if (result == -1) {
                 JOptionPane.showMessageDialog(null, "Player Wins!");
-                computerScore++;
+                playerScore++;
             } else {
                 JOptionPane.showMessageDialog(null, "Draw!");
             }
