@@ -28,6 +28,7 @@ public class TicTacToeAI {
             button.setBackground(Color.decode("#F5E7B2"));
             button.setHorizontalTextPosition(SwingConstants.CENTER);
             button.setVerticalTextPosition(SwingConstants.CENTER);
+            button.addActionListener(new BtnActionListener());
             buttonPanel.add(button);
             board[i / 3][i % 3] = button;
 
@@ -44,6 +45,16 @@ public class TicTacToeAI {
         window.setResizable(false);
 
 
+    }
+    class BtnActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton clickedBtn = (JButton) e.getSource();
+            clickedBtn.setText("X");
+            clickedBtn.setEnabled(false);
+
+        }
     }
 
 
