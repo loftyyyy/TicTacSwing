@@ -6,13 +6,16 @@ public class Minimax {
 
     public int evaluate(JButton[][] board, int depth, float alpha, float beta, boolean maximizingPlayer) {
         int result = checkWin(board);
+        // Base Case
         if (result != 0) {
             return result;
         }
 
+        // Depth is 9 since that's the moves available in an empty board.
         if (depth == 9 || checkDraw(board)) {
             return 0;
         }
+        // Base case up to hereeee
 
         if (maximizingPlayer) {
             int maxEval = Integer.MIN_VALUE;

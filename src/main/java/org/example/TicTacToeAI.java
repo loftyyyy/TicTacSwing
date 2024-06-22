@@ -9,8 +9,6 @@ import java.util.ArrayList;
 public class TicTacToeAI {
     private JButton[][] board = new JButton[3][3];
     private boolean playerMove = true;
-    //TODO: Create a AIMove and PlayerMove methods
-    // also create a checkWin that takes a board as the argument.
 
     public static void main(String[] args){
 
@@ -65,9 +63,6 @@ public class TicTacToeAI {
                         bestRow = i;
                         bestColumn = j;
                     }
-
-
-
                 }
             }
         }
@@ -89,6 +84,10 @@ public class TicTacToeAI {
                     AIMove(board, 0);
                 }
             }
+            if(checkWin(board) != 0){
+                // Implemented Runnable so that it highlights the winning combination before showing the message dialog
+                SwingUtilities.invokeLater(new showMessage(checkWin(board)));
+            }
 
             clickedBtn.setEnabled(false);
         }
@@ -96,60 +95,45 @@ public class TicTacToeAI {
 
     public int checkWin(JButton[][] board){
 
-        // Vertical
+        // Vertical and Horizontal
         for(int i = 0; i < 3; i++){
             if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText()) && board[2][i].getText().equals(board[0][i].getText()) && !board[0][i].getText().isEmpty() ){
-//                board[0][i].setEnabled(true);
-//                board[1][i].setEnabled(true);
-//                board[2][i].setEnabled(true);
+                board[0][i].setEnabled(true);
+                board[1][i].setEnabled(true);
+                board[2][i].setEnabled(true);
 
-                if(board[0][i].getText().equals("X")){
-                    return -1;
-                }else if(board[0][i].getText().equals("O")){
-                    return 1;
-                }
+                return board[0][i].getText().equals("X") ? -1 : 1;
+
 
             }
-        }
-        //Horizontal
-        for(int i = 0; i < 3; i++){
             if(board[i][0].getText().equals(board[i][1].getText()) && board[i][1].getText().equals(board[i][2].getText()) && board[i][2].getText().equals(board[i][0].getText()) && !board[i][0].getText().isEmpty() ){
-//                board[i][0].setEnabled(true);
-//                board[i][1].setEnabled(true);
-//                board[i][2].setEnabled(true);
+                board[i][0].setEnabled(true);
+                board[i][1].setEnabled(true);
+                board[i][2].setEnabled(true);
 
-                if(board[i][0].getText().equals("X")){
-                    return -1;
-                }else if(board[i][0].getText().equals("O")){
-                    return 1;
-                }
+                return board[i][0].getText().equals("X") ? -1 : 1;
             }
         }
         //Diagonals
 
         if(board[0][0].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][2].getText()) && board[2][2].getText().equals(board[0][0].getText()) && !board[0][0].getText().isEmpty() ){
-//            board[0][0].setEnabled(true);
-//            board[1][1].setEnabled(true);
-//            board[2][2].setEnabled(true);
+            board[0][0].setEnabled(true);
+            board[1][1].setEnabled(true);
+            board[2][2].setEnabled(true);
 
-            if(board[0][0].getText().equals("X")){
-                return -1;
-            }else if(board[0][0].getText().equals("O")){
-                return 1;
-            }
+            return board[0][0].getText().equals("X") ? -1 : 1;
         }
 
         if(board[0][2].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][0].getText()) && board[2][0].getText().equals(board[0][2].getText()) && !board[0][2].getText().isEmpty() ){
-//            board[0][2].setEnabled(true);
-//            board[1][1].setEnabled(true);
-//            board[2][0].setEnabled(true);
+            board[0][2].setEnabled(true);
+            board[1][1].setEnabled(true);
+            board[2][0].setEnabled(true);
 
-            if(board[0][2].getText().equals("X")){
-                return -1;
-            }else if(board[0][2].getText().equals("O")){
-                return 1;
-            }
+            return board[0][2].getText().equals("X") ? -1 : 1;
         }
+
+        //Check draw
+        // If returns 0, it means a move can still be made. If 2, that means that there are no moves available and no one won. So it's a draw.
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j].getText().isEmpty()) {
@@ -161,15 +145,25 @@ public class TicTacToeAI {
         return 2;
 
     }
-    public void showResult(int result) {
-        if (result == 1) {
-            JOptionPane.showMessageDialog(null, "AI Wins!");
-        } else if (result == -1) {
-            JOptionPane.showMessageDialog(null, "Player Wins!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Draw!");
-        }
+    class showMessage implements Runnable{
+        int result;
+        showMessage(int result){
+            this.result = result;
 
+        }
+        @Override
+        public void run() {
+
+            if (result == 1) {
+                JOptionPane.showMessageDialog(null, "AI Wins!");
+            } else if (result == -1) {
+                JOptionPane.showMessageDialog(null, "Player Wins!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Draw!");
+            }
+            clearBoard();
+
+        }
     }
     public void clearBoard(){
 
