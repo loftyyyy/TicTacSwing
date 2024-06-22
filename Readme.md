@@ -3,7 +3,7 @@
 This project implements two versions of the classic game Tic-Tac-Toe:
 
 1.  **TicTacToeClassic:** A traditional two-player version where users take turns marking X's and O's.
-2.  **TicTacToeAI:** A single-player version where the user plays against an AI opponent powered by the Minimax algorithm with alpha-beta pruning.
+2.  **TicTacToeAI:** A single-player version where the user plays against an AI opponent powered by the Minimax algorithm with alpha-beta pruning. (Which is impossible to defeat, the best you can do is a draw)
 
 ## Features
 

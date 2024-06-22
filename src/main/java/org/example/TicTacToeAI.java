@@ -12,6 +12,11 @@ public class TicTacToeAI {
 
     private JButton[][] board = new JButton[3][3];
     private boolean playerMove = true;
+    private JLabel playerLabel;
+    private JLabel computerLabel;
+    private int playerScore = 0;
+    private int computerScore = 0;
+
 
     public static void main(String[] args){
 
@@ -37,9 +42,21 @@ public class TicTacToeAI {
         }
         JButton clearBTN = new JButton("Clear");
         clearBTN.addActionListener(e -> clearBoard());
-        controlPanel.add(clearBTN);
-        window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
 
+        playerLabel = new JLabel("X : " + playerScore);
+        computerLabel = new JLabel("O : " + computerScore);
+
+        playerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        computerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        playerLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        computerLabel.setFont(new Font("Arial", Font.BOLD, 24));
+
+        controlPanel.add(playerLabel);
+        controlPanel.add(clearBTN);
+        controlPanel.add(computerLabel);
+
+        window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
         window.getContentPane().add(BorderLayout.SOUTH, controlPanel);
 
         window.setSize(500,700);
@@ -137,6 +154,10 @@ public class TicTacToeAI {
         return 2;
 
     }
+    public void updateScore(){
+        playerLabel.setText("X : " + playerScore);
+        computerLabel.setText("O : " + computerScore);
+    }
     public void clearBoard(){
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length; j++){
@@ -180,12 +201,15 @@ public class TicTacToeAI {
 
             if (result == 1) {
                 JOptionPane.showMessageDialog(null, "AI Wins!");
+                playerScore++;
             } else if (result == -1) {
                 JOptionPane.showMessageDialog(null, "Player Wins!");
+                computerScore++;
             } else {
                 JOptionPane.showMessageDialog(null, "Draw!");
             }
             clearBoard();
+            updateScore();
 
         }
     }
