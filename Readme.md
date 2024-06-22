@@ -35,7 +35,7 @@ This project implements two versions of the classic game Tic-Tac-Toe:
 1.  **Clone the Repository:**
 
 ```bash
-git clone https://github.com/<your-username>/tic-tac-toe.git
+git clone https://github.com/loftyyyy/TicTacSwing
 ```
 
 2.  **Compile and Run:**
