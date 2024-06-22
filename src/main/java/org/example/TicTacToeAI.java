@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class TicTacToeAI {
     private JButton[][] board = new JButton[3][3];
+    private boolean playerMove = true;
     //TODO: Create a AIMove and PlayerMove methods
     // also create a checkWin that takes a board as the argument.
 
@@ -46,14 +47,36 @@ public class TicTacToeAI {
 
 
     }
+    public void AIMove(JButton[][] board, int depth){
+        Minimax minimax = new Minimax();
+        float bestEval = Float.NEGATIVE_INFINITY;
+
+        for(int i = 0; i < board.length; i++ ){
+            for(int j = 0; j < board[i].length; j++){
+                if(board[i][j].getText().isEmpty()){
+                    board[i][j].setText("O");
+                    float eval = minimax.evaluate(board, depth, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY, false);
+                    System.out.println(eval);
+
+                }
+            }
+        }
+    }
     class BtnActionListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton clickedBtn = (JButton) e.getSource();
-            clickedBtn.setText("X");
-            clickedBtn.setEnabled(false);
+            if(playerMove){
+                clickedBtn.setText("X");
+                playerMove = false;
+            }else{
+//                AIMove(board, 8);
 
+                playerMove = true;
+            }
+
+            clickedBtn.setEnabled(false);
         }
     }
 
