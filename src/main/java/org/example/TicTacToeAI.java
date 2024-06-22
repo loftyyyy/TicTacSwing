@@ -46,8 +46,6 @@ public class TicTacToeAI {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setResizable(false);
-
-
     }
 
     /**

@@ -29,7 +29,6 @@ public class TicTacToeClassic {
 
         for(int i = 0; i < 9;i++){
             JButton button = new JButton();
-//            button.setPreferredSize();
             button.setFocusPainted(false);
             button.setFont(new Font("Lato", Font.PLAIN, 120));
             button.setBackground(Color.decode("#F5E7B2"));
@@ -37,12 +36,10 @@ public class TicTacToeClassic {
             button.setVerticalTextPosition(SwingConstants.CENTER);
             button.addActionListener(new ButtonActionListener());
             board[i / 3][i % 3] = button;
-//            System.out.println("[" + i / 3 + "]" + "[" + i % 3 +  "]");
             buttons.add(button);
             buttonPanel.add(button);
         }
         JButton clearButton = new JButton("Clear Table");
-//        clearButton.addActionListener(e -> buttons.stream().forEach(button -> {button.setText("");button.setEnabled(true); currentChar = 'X'; won = false; moveCount = 0;}));
         clearButton.addActionListener(e -> clearBoard());
 
 
