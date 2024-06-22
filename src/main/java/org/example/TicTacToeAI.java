@@ -35,6 +35,7 @@ public class TicTacToeAI {
 
         }
         JButton clearBTN = new JButton("Clear");
+        clearBTN.addActionListener(e -> clearBoard());
         controlPanel.add(clearBTN);
         window.getContentPane().add(BorderLayout.CENTER, buttonPanel);
 
@@ -49,17 +50,31 @@ public class TicTacToeAI {
     }
     public void AIMove(JButton[][] board, int depth){
         Minimax minimax = new Minimax();
-        float bestEval = Float.NEGATIVE_INFINITY;
+        int bestEval = Integer.MIN_VALUE;
+        int bestRow = -1;
+        int bestColumn = -1;
 
         for(int i = 0; i < board.length; i++ ){
             for(int j = 0; j < board[i].length; j++){
                 if(board[i][j].getText().isEmpty()){
                     board[i][j].setText("O");
-                    float eval = minimax.evaluate(board, depth, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY, false);
-                    System.out.println(eval);
+                    int eval = minimax.evaluate(board, depth, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY, false);
+                    board[i][j].setText("");
+                    if(eval > bestEval){
+                        bestEval = eval;
+                        bestRow = i;
+                        bestColumn = j;
+                    }
+
+
 
                 }
             }
+        }
+        if(bestRow != -1 && bestColumn != -1){
+            board[bestRow][bestColumn].setText("O");
+            board[bestRow][bestColumn].setEnabled(false);
+            playerMove = true;
         }
     }
     class BtnActionListener implements ActionListener{
@@ -70,15 +85,103 @@ public class TicTacToeAI {
             if(playerMove){
                 clickedBtn.setText("X");
                 playerMove = false;
-            }else{
-//                AIMove(board, 8);
-
-                playerMove = true;
+                if(checkWin(board) == 0){
+                    AIMove(board, 0);
+                }
             }
 
             clickedBtn.setEnabled(false);
         }
     }
+
+    public int checkWin(JButton[][] board){
+
+        // Vertical
+        for(int i = 0; i < 3; i++){
+            if(board[0][i].getText().equals(board[1][i].getText()) && board[1][i].getText().equals(board[2][i].getText()) && board[2][i].getText().equals(board[0][i].getText()) && !board[0][i].getText().isEmpty() ){
+//                board[0][i].setEnabled(true);
+//                board[1][i].setEnabled(true);
+//                board[2][i].setEnabled(true);
+
+                if(board[0][i].getText().equals("X")){
+                    return -1;
+                }else if(board[0][i].getText().equals("O")){
+                    return 1;
+                }
+
+            }
+        }
+        //Horizontal
+        for(int i = 0; i < 3; i++){
+            if(board[i][0].getText().equals(board[i][1].getText()) && board[i][1].getText().equals(board[i][2].getText()) && board[i][2].getText().equals(board[i][0].getText()) && !board[i][0].getText().isEmpty() ){
+//                board[i][0].setEnabled(true);
+//                board[i][1].setEnabled(true);
+//                board[i][2].setEnabled(true);
+
+                if(board[i][0].getText().equals("X")){
+                    return -1;
+                }else if(board[i][0].getText().equals("O")){
+                    return 1;
+                }
+            }
+        }
+        //Diagonals
+
+        if(board[0][0].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][2].getText()) && board[2][2].getText().equals(board[0][0].getText()) && !board[0][0].getText().isEmpty() ){
+//            board[0][0].setEnabled(true);
+//            board[1][1].setEnabled(true);
+//            board[2][2].setEnabled(true);
+
+            if(board[0][0].getText().equals("X")){
+                return -1;
+            }else if(board[0][0].getText().equals("O")){
+                return 1;
+            }
+        }
+
+        if(board[0][2].getText().equals(board[1][1].getText()) && board[1][1].getText().equals(board[2][0].getText()) && board[2][0].getText().equals(board[0][2].getText()) && !board[0][2].getText().isEmpty() ){
+//            board[0][2].setEnabled(true);
+//            board[1][1].setEnabled(true);
+//            board[2][0].setEnabled(true);
+
+            if(board[0][2].getText().equals("X")){
+                return -1;
+            }else if(board[0][2].getText().equals("O")){
+                return 1;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j].getText().isEmpty()) {
+                    return 0;
+                }
+            }
+        }
+
+        return 2;
+
+    }
+    public void showResult(int result) {
+        if (result == 1) {
+            JOptionPane.showMessageDialog(null, "AI Wins!");
+        } else if (result == -1) {
+            JOptionPane.showMessageDialog(null, "Player Wins!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Draw!");
+        }
+
+    }
+    public void clearBoard(){
+
+                for(int i = 0; i < board.length; i++){
+                    for(int j = 0; j < board[i].length; j++){
+                        board[i][j].setText("");
+                    board[i][j].setEnabled(true);
+                    }
+                }
+                playerMove = true;
+            }
+
 
 
 }
