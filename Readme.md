@@ -72,4 +72,3 @@ java org.example.TicTacToeAI       // For AI mode
 
 
 
-Please note that this is a Markdown (`.md`) version of the README. You can copy and paste this into a file named `README.md` in your project directory. Remember to replace `<your-username>` with your actual GitHub username.
