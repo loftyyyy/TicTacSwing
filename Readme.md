@@ -72,3 +72,8 @@ java org.example.TicTacToeAI       // For AI mode
 
 
 
+[[Video of My Tic-Tac-Toe AI](https://github.com/loftyyyy/TicTacSwing/assets/78846865/6f94d011-994f-4982-9cfb-889c4704d926
+)]
+
+
+
