@@ -65,6 +65,7 @@ java org.example.TicTacToeAI       // For AI mode
 -   **Improved UI:** Consider using more modern-looking UI elements and enhancing the overall visual appeal of the game.
 -   **Difficulty Levels:** Implement different difficulty levels for the AI opponent by adjusting the depth of the Minimax search.
 -   **User Interface:** Consider adding a menu for choosing game modes (two-player or AI) and potentially customizing game settings.
+-   **SFX:** Implement different sound effects when an event happens.
 
 ## Learnings
 - I have learned how to implement, think outside the box, and search for resources online.
