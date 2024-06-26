@@ -15,7 +15,7 @@ public class Minimax {
      * @param maximizingPlayer
      * @return
      */
-    public int evaluate(JButton[][] board, int depth, float alpha, float beta, boolean maximizingPlayer) {
+    public int evaluate(JButton[][] board, int depth, int alpha, int beta, boolean maximizingPlayer) {
         //Checks if there are no winners yet, if true proceed and skip the base case.
         int result = checkWin(board);
         // Base Case

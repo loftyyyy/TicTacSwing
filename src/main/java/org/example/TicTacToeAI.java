@@ -80,7 +80,7 @@ public class TicTacToeAI {
             for(int j = 0; j < board[i].length; j++){
                 if(board[i][j].getText().isEmpty()){
                     board[i][j].setText("O");
-                    int eval = minimax.evaluate(board, depth, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY, false);
+                    int eval = minimax.evaluate(board, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
                     board[i][j].setText("");
                     if(eval > bestEval){
                         bestEval = eval;
