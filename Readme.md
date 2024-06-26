@@ -1,4 +1,4 @@
-# Unbeatable Tic-Tac-Toe with AI (Java Swing)
+# Unbeatable Tic-Tac-Toe with Minimax (Java Swing)
 
 This project implements two versions of the classic game Tic-Tac-Toe:
 
