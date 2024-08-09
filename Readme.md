@@ -72,7 +72,7 @@ java org.example.TicTacToeAI       // For AI mode
 - I have learned how to implement, think outside the box, and search for resources online.
 - Algorithms made me think of other ways to create a simple mechanism. It makes you think intuitively. For example, my logic for checking if a game state is in a draw.
 
-### Also check out my MIDI machine (https://github.com/loftyyyy/MIDI-Machine)
+### Also check out my MIDI machine (https://github.com/loftyyyy/MIDI-Machine) Project
 
 [![Video of My Tic-Tac-Toe AI]](https://github.com/loftyyyy/TicTacSwing/assets/78846865/6f94d011-994f-4982-9cfb-889c4704d926)
 
