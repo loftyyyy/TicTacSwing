@@ -31,7 +31,7 @@ This project implements two versions of the classic game Tic-Tac-Toe:
 -   **`AIMove` Method:** Calls the `Minimax` class to calculate the optimal move and updates the board.
 
 ## How to Play
-- Here's a web representation of the [game](https://loftyyyy.github.io/TicTacWeb/).
+- Here's a web representation of the **[GAME](https://loftyyyy.github.io/TicTacWeb/)**.
 
 1.  **Clone the Repository:**
 
