@@ -69,7 +69,7 @@ java org.example.TicTacToeAI       // For AI mode
 -   **SFX:** Implement different sound effects when an event happens.
 
 ## Learnings
-- I have learned how to implement, think outside the box, and search for resources online.
+- I have learned how to implement, think outside the box, and search for resources online .
 - Algorithms made me think of other ways to create a simple mechanism. It makes you think intuitively. For example, my logic for checking if a game state is in a draw.
 
 ### Also check out my MIDI machine (https://github.com/loftyyyy/MIDI-Machine) Project
